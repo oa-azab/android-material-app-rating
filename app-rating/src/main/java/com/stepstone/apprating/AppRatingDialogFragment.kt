@@ -71,6 +71,7 @@ class AppRatingDialogFragment : DialogFragment() {
 
     private fun setupAlertDialog(context: Context): AlertDialog {
         dialogView = AppRatingDialogView(context)
+        dialogView.setRatingDialogListener(listener)
         val builder = AlertDialog.Builder(activity!!)
         data = arguments?.getSerializable(DIALOG_DATA) as AppRatingDialog.Builder.Data
 
@@ -98,7 +99,8 @@ class AppRatingDialogFragment : DialogFragment() {
             dialogView.setNoteDescriptions(data.noteDescriptions!!)
         }
 
-        dialogView.setDefaultRating(data.defaultRating)
+        if (data.defaultRating > 0)
+            dialogView.setDefaultRating(data.defaultRating)
     }
 
     private fun setupInputBox() {

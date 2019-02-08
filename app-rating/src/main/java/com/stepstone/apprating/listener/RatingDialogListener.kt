@@ -28,4 +28,6 @@ interface RatingDialogListener {
     fun onNegativeButtonClicked()
 
     fun onNeutralButtonClicked()
+
+    fun onRateChanged(rate: Int)
 }

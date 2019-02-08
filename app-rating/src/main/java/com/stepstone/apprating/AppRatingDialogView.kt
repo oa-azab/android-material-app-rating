@@ -30,6 +30,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.LinearLayout
 import com.stepstone.apprating.listener.OnRatingBarChangedListener
+import com.stepstone.apprating.listener.RatingDialogListener
 import kotlinx.android.synthetic.main.component_app_rate_dialog.view.*
 
 /**
@@ -39,6 +40,7 @@ import kotlinx.android.synthetic.main.component_app_rate_dialog.view.*
 class AppRatingDialogView(context: Context) : LinearLayout(context), OnRatingBarChangedListener {
 
     private var noteDescriptions: List<String>? = null
+    private var listener: RatingDialogListener? = null
 
     init {
         setup(context)
@@ -196,8 +198,13 @@ class AppRatingDialogView(context: Context) : LinearLayout(context), OnRatingBar
         commentEditText.setHintTextColor(getColorFromRes(color))
     }
 
+    fun setRatingDialogListener(listener: RatingDialogListener?) {
+        this.listener = listener
+    }
+
     override fun onRatingChanged(rating: Int) {
         updateNoteDescriptionText(rating - 1)
+        listener?.onRateChanged(rating)
     }
 
     private fun updateNoteDescriptionText(rating: Int) {

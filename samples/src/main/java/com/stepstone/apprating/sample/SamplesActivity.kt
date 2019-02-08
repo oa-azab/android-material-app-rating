@@ -100,7 +100,6 @@ class SamplesActivity : FragmentActivity(), RatingDialogListener {
                 .setNeutralButtonText("Not interested")
                 .setPositiveButtonText("Maybe later")
                 .setNumberOfStars(5)
-                .setDefaultRating(0)
                 .setTitle("Rate this application")
                 .setCommentInputEnabled(false)
                 .setCancelable(false)
@@ -109,6 +108,7 @@ class SamplesActivity : FragmentActivity(), RatingDialogListener {
                 .create(this@SamplesActivity)
         dialog.show()
     }
+
     override fun onPositiveButtonClicked(rate: Int, comment: String) {
         Toast.makeText(this@SamplesActivity, "Rate : $rate\nComment : $comment", Toast.LENGTH_LONG).show()
     }
@@ -119,5 +119,9 @@ class SamplesActivity : FragmentActivity(), RatingDialogListener {
 
     override fun onNeutralButtonClicked() {
         Toast.makeText(this@SamplesActivity, "Neutral button clicked", Toast.LENGTH_LONG).show()
+    }
+
+    override fun onRateChanged(rate: Int) {
+        Toast.makeText(this@SamplesActivity, "Rate changed : $rate", Toast.LENGTH_SHORT).show()
     }
 }

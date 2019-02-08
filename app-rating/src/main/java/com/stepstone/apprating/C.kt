@@ -17,7 +17,7 @@ limitations under the License.
 package com.stepstone.apprating
 
 const val MAX_RATING = 6
-const val DEFAULT_RATING = 4
+const val DEFAULT_RATING = 0
 
 const val DIALOG_DATA = "data"
 const val CURRENT_RATE_NUMBER = "currentRateNumber"

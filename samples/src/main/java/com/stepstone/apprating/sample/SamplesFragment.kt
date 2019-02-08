@@ -59,4 +59,8 @@ class SamplesFragment : Fragment(), RatingDialogListener {
     override fun onNeutralButtonClicked() {
         Toast.makeText(activity, "Neutral button clicked", Toast.LENGTH_LONG).show()
     }
+
+    override fun onRateChanged(rate: Int) {
+        Toast.makeText(activity, "Rate changed : $rate", Toast.LENGTH_SHORT).show()
+    }
 }
