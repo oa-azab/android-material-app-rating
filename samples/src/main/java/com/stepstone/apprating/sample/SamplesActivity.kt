@@ -6,7 +6,7 @@ import android.widget.Toast
 import com.stepstone.apprating.AppRatingDialog
 import com.stepstone.apprating.listener.RatingDialogListener
 import kotlinx.android.synthetic.main.activity_samples.*
-import java.util.Arrays
+import java.util.*
 
 class SamplesActivity : FragmentActivity(), RatingDialogListener {
 
@@ -18,6 +18,7 @@ class SamplesActivity : FragmentActivity(), RatingDialogListener {
         showDialogButton_2.setOnClickListener { showRatingDialog_example2() }
         showDialogButton_3.setOnClickListener { showRatingDialog_example3() }
         showDialogButton_4.setOnClickListener { showRatingDialog_example4() }
+        showDialogButton_5.setOnClickListener { showRatingDialog_example5() }
     }
 
     private fun showRatingDialog_example1() {
@@ -94,6 +95,20 @@ class SamplesActivity : FragmentActivity(), RatingDialogListener {
                 .show()
     }
 
+    private fun showRatingDialog_example5() {
+        val dialog = AppRatingDialog.Builder()
+                .setNeutralButtonText("Not interested")
+                .setPositiveButtonText("Maybe later")
+                .setNumberOfStars(5)
+                .setDefaultRating(0)
+                .setTitle("Rate this application")
+                .setCommentInputEnabled(false)
+                .setCancelable(false)
+                .setCanceledOnTouchOutside(false)
+                .setTitleTextColor(R.color.titleTextColor)
+                .create(this@SamplesActivity)
+        dialog.show()
+    }
     override fun onPositiveButtonClicked(rate: Int, comment: String) {
         Toast.makeText(this@SamplesActivity, "Rate : $rate\nComment : $comment", Toast.LENGTH_LONG).show()
     }
