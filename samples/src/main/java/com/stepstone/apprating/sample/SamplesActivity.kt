@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.support.v4.app.FragmentActivity
 import android.widget.Toast
 import com.stepstone.apprating.AppRatingDialog
+import com.stepstone.apprating.AppRatingDialogFragment
 import com.stepstone.apprating.listener.RatingDialogListener
 import kotlinx.android.synthetic.main.activity_samples.*
 import java.util.*
@@ -95,8 +96,9 @@ class SamplesActivity : FragmentActivity(), RatingDialogListener {
                 .show()
     }
 
+    lateinit var rateDialogFragment: AppRatingDialogFragment
     private fun showRatingDialog_example5() {
-        val dialog = AppRatingDialog.Builder()
+        rateDialogFragment = AppRatingDialog.Builder()
                 .setNeutralButtonText("Not interested")
                 .setPositiveButtonText("Maybe later")
                 .setNumberOfStars(5)
@@ -106,7 +108,7 @@ class SamplesActivity : FragmentActivity(), RatingDialogListener {
                 .setCanceledOnTouchOutside(false)
                 .setTitleTextColor(R.color.titleTextColor)
                 .create(this@SamplesActivity)
-        dialog.show()
+                .show()
     }
 
     override fun onPositiveButtonClicked(rate: Int, comment: String) {
@@ -123,5 +125,6 @@ class SamplesActivity : FragmentActivity(), RatingDialogListener {
 
     override fun onRateChanged(rate: Int) {
         Toast.makeText(this@SamplesActivity, "Rate changed : $rate", Toast.LENGTH_SHORT).show()
+        rateDialogFragment.getRatingView().enableRatingBar(false)
     }
 }

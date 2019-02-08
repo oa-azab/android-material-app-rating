@@ -75,6 +75,15 @@ class CustomRatingBar(context: Context, attrs: AttributeSet) : LinearLayout(cont
         return starButton
     }
 
+    fun enableRatingBar(enable: Boolean) {
+        ratingBarContainer.isEnabled = enable
+        for (i in 0 until ratingBarContainer.childCount) {
+            val child = ratingBarContainer.getChildAt(i)
+            child.isEnabled = enable
+            child.isClickable = enable
+        }
+    }
+
     fun setStarColor(@ColorRes colorResId: Int) {
         this.starColorResId = colorResId
     }

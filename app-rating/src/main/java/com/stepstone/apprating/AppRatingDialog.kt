@@ -58,8 +58,8 @@ class AppRatingDialog private constructor(
     /**
      * This method shows rating dialog.
      */
-    fun show() {
-        AppRatingDialogFragment.newInstance(data).apply {
+    fun show(): AppRatingDialogFragment {
+        return AppRatingDialogFragment.newInstance(data).apply {
             fragment?.let {
                 setTargetFragment(it, requestCode)
             }

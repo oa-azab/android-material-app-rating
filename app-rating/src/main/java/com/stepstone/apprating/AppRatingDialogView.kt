@@ -198,6 +198,10 @@ class AppRatingDialogView(context: Context) : LinearLayout(context), OnRatingBar
         commentEditText.setHintTextColor(getColorFromRes(color))
     }
 
+    fun enableRatingBar(enable: Boolean) {
+        ratingBar.enableRatingBar(false)
+    }
+
     fun setRatingDialogListener(listener: RatingDialogListener?) {
         this.listener = listener
     }

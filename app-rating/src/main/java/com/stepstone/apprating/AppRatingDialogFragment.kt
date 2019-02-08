@@ -186,6 +186,10 @@ class AppRatingDialogFragment : DialogFragment() {
         }
     }
 
+    fun getRatingView(): AppRatingDialogView {
+        return dialogView
+    }
+
     companion object {
 
         fun newInstance(data: AppRatingDialog.Builder.Data): AppRatingDialogFragment {
