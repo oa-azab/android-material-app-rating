@@ -2,6 +2,7 @@ package com.stepstone.apprating.sample
 
 import android.os.Bundle
 import android.support.v4.app.FragmentActivity
+import android.support.v7.app.AlertDialog
 import android.widget.Toast
 import com.stepstone.apprating.AppRatingDialog
 import com.stepstone.apprating.AppRatingDialogFragment
@@ -97,9 +98,10 @@ class SamplesActivity : FragmentActivity(), RatingDialogListener {
     }
 
     lateinit var rateDialogFragment: AppRatingDialogFragment
+    var ratingDone = false
     private fun showRatingDialog_example5() {
         rateDialogFragment = AppRatingDialog.Builder()
-                .setNeutralButtonText("Not interested")
+                .setNeutralButtonText("Thanks")
                 .setPositiveButtonText("Maybe later")
                 .setNumberOfStars(5)
                 .setTitle("Rate this application")
@@ -126,5 +128,7 @@ class SamplesActivity : FragmentActivity(), RatingDialogListener {
     override fun onRateChanged(rate: Int) {
         Toast.makeText(this@SamplesActivity, "Rate changed : $rate", Toast.LENGTH_SHORT).show()
         rateDialogFragment.getRatingView().enableRatingBar(false)
+        ratingDone = true
+        rateDialogFragment.setButtonText(AlertDialog.BUTTON_NEGATIVE, "rate on store")
     }
 }

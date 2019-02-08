@@ -186,6 +186,11 @@ class AppRatingDialogFragment : DialogFragment() {
         }
     }
 
+    fun setButtonText(which: Int, newText: String) {
+        if (::alertDialog.isInitialized)
+            alertDialog.getButton(which).text = newText
+    }
+
     fun getRatingView(): AppRatingDialogView {
         return dialogView
     }
